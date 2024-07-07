@@ -1,4 +1,3 @@
 ## Documento de requisitos
 
-
-![Diagrama PlantUML](https://whimsical.com/gatekeeper-TCaMcYM8YM5vzkZcx6dKmK)
+[Veja o Diagrama no Whimsical](https://whimsical.com/gatekeeper-TCaMcYM8YM5vzkZcx6dKmK)
