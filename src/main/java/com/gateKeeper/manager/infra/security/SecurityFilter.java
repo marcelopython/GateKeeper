@@ -43,7 +43,8 @@ public class SecurityFilter extends OncePerRequestFilter {
                     new SimpleGrantedAuthority("ROLE_USER")
             );
 
-            Authentication authentication = new UsernamePasswordAuthenticationToken(user, authorities);
+            Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, authorities);
+            System.out.println(authentication);
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
         }
@@ -55,10 +56,10 @@ public class SecurityFilter extends OncePerRequestFilter {
     private String recoverToken(HttpServletRequest request){
 
         String authHeader = request.getHeader("Authorization");
-
         if(authHeader == null || !authHeader.startsWith("Bearer ")){
             return null;
         }
+        System.out.println( authHeader.replace("Bearer ", ""));
 
         return authHeader.replace("Bearer ", "");
 

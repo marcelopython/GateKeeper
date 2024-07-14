@@ -7,9 +7,12 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.type.SqlTypes;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.UUID;
+import lombok.Data;
 
+@Data
 @Entity
 public class User {
 
@@ -90,4 +93,6 @@ public class User {
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+
 }
