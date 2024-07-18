@@ -30,23 +30,34 @@ public class SignUpService {
         this.company = company;
     }
 
-    public SignUpResponseDTO register(SignUpRequestDTO companyRequestDTO) {
+    public SignUpResponseDTO register(SignUpRequestDTO signUpRequestDTO) {
 
-        this.company.setName(companyRequestDTO.name());
-        this.company.setEmail(companyRequestDTO.email());
-        this.company.setPhone(companyRequestDTO.phone());
+        this.validateSignUpRequest(signUpRequestDTO.getEmail());
+
+        this.company.setName(signUpRequestDTO.getName());
+        this.company.setEmail(signUpRequestDTO.getEmail());
+        this.company.setPhone(signUpRequestDTO.getPhone());
+        this.company.setDocument(signUpRequestDTO.getDocument());
 
         Company newCompany = this.companyRepository.save(this.company);
 
-        this.user.setName(companyRequestDTO.name());
-        this.user.setEmail(companyRequestDTO.email());
-        this.user.setPhone(companyRequestDTO.email());
-        this.user.setPassword(passwordEncoder.encode(companyRequestDTO.password()));
+        this.user.setName(signUpRequestDTO.getName());
+        this.user.setEmail(signUpRequestDTO.getEmail());
+        this.user.setPhone(signUpRequestDTO.getPhone());
+        this.user.setPassword(passwordEncoder.encode(signUpRequestDTO.getPassword()));
         this.user.setCompanyId(newCompany);
 
         this.userRepository.save(this.user);
 
         return new SignUpResponseDTO(this.company.getName(), this.company.getEmail());
+    }
+
+    private void validateSignUpRequest(String email){
+
+        if(this.companyRepository.existsByEmail(email)){
+            throw new IllegalArgumentException("A company with this email already exists");
+        }
+
     }
 
 }

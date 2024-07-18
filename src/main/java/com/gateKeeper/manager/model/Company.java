@@ -36,10 +36,12 @@ public class Company implements Serializable {
     private UUID uuid;
     
     private String name;
-    
-    private String email;
-    
-    private String document;
+
+	@Column(unique = true, nullable = false)
+	private String email;
+
+	@Column(unique = true, nullable = false)
+	private String document;
     
     private String phone;
     
