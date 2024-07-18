@@ -28,7 +28,13 @@ public class User {
 
     private String email;
 
+    private String phone;
+
     private String password;
+
+    @OneToOne
+    @JoinColumn(name = "company_id", nullable = false)
+    private Company companyId;
 
     @CreationTimestamp
     @Column(name = "created_at")
@@ -95,4 +101,19 @@ public class User {
     }
 
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Company getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Company companyId) {
+        this.companyId = companyId;
+    }
 }
