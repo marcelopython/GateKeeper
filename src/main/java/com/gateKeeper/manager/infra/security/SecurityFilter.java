@@ -2,6 +2,7 @@ package com.gateKeeper.manager.infra.security;
 
 import com.gateKeeper.manager.model.User;
 import com.gateKeeper.manager.repository.UserRepository;
+import com.gateKeeper.manager.service.Auth;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,6 +19,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+
+import static com.gateKeeper.manager.service.Auth.*;
 
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
@@ -45,6 +48,12 @@ public class SecurityFilter extends OncePerRequestFilter {
 
             Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, authorities);
             System.out.println(authentication);
+
+            // Set user if you can authenticate
+            if(authentication.isAuthenticated()){
+                Auth.setUser(user);
+            }
+
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
         }

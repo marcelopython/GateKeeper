@@ -1,16 +1,12 @@
 package com.gateKeeper.manager.model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -44,7 +40,10 @@ public class Company implements Serializable {
 	private String document;
     
     private String phone;
-    
+
+	@OneToMany(mappedBy = "companyId")
+	private Set<System> systems;
+
     @CreationTimestamp
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;
@@ -100,9 +99,7 @@ public class Company implements Serializable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
 	
-
 	public Instant getCreatedAt() {
 		return createdAt;
 	}
