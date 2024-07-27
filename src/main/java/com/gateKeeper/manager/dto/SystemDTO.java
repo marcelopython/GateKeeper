@@ -2,8 +2,8 @@ package com.gateKeeper.manager.dto;
 
 import com.gateKeeper.manager.model.Company;
 import com.gateKeeper.manager.model.System;
+import jakarta.validation.constraints.NotBlank;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
