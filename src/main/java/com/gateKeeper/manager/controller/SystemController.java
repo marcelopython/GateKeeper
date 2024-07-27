@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -15,7 +16,6 @@ import java.util.List;
 public class SystemController {
 
     private final SystemServiceInterface systemService;
-
 
     public SystemController(SystemServiceInterface systemService) {
         this.systemService = systemService;
@@ -28,7 +28,7 @@ public class SystemController {
     }
 
     @PostMapping
-    public ResponseEntity<SystemDTO> create(@RequestBody SystemDTO systemDTO) {
+    public ResponseEntity<SystemDTO> create(@Valid @RequestBody SystemDTO systemDTO) {
 
         SystemDTO newSystem = systemService.create(systemDTO);
 

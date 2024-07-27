@@ -1,22 +1,27 @@
 package com.gateKeeper.manager.dto;
 
+import com.gateKeeper.manager.validation.CPFOrCNPJ;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 public class SignUpRequestDTO {
 
-    @NotBlank(message = "Name is mandatory")
+    @NotBlank(message = "Name is required")
     private String name;
 
-    @NotBlank(message = "Email is mandatory")
+    @NotBlank(message = "Email is required")
     @Email
     private String email;
 
-    @NotBlank(message = "Document is mandatory")
+    @CPFOrCNPJ
+    @NotBlank(message = "Document is required")
     private String document;
-    @NotBlank(message = "Phone is mandatory")
+
+    @NotBlank(message = "Phone is required")
     private String phone;
-    @NotBlank(message = "Password is mandatory")
+
+    @NotBlank(message = "Password is required")
     private String password;
 
     public String getName() {

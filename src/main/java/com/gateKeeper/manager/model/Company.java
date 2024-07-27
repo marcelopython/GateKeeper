@@ -1,6 +1,7 @@
 package com.gateKeeper.manager.model;
 
 
+import com.gateKeeper.manager.validation.CPFOrCNPJ;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -14,6 +15,8 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.type.SqlTypes;
+
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -30,13 +33,16 @@ public class Company implements Serializable {
     @UuidGenerator
     @JdbcTypeCode(SqlTypes.CHAR)
     private UUID uuid;
-    
+
+	@NotNull
     private String name;
 
 	@Column(unique = true, nullable = false)
+	@NotNull
 	private String email;
 
 	@Column(unique = true, nullable = false)
+	@NotNull
 	private String document;
     
     private String phone;

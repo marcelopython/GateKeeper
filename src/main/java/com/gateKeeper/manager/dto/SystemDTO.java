@@ -4,13 +4,15 @@ import com.gateKeeper.manager.model.Company;
 import com.gateKeeper.manager.model.System;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 
 public class SystemDTO {
 
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "Name is required")
     private String name;
 
     private String description;

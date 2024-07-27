@@ -3,6 +3,7 @@ package com.gateKeeper.manager.controller;
 import com.gateKeeper.manager.dto.SignUpRequestDTO;
 import com.gateKeeper.manager.dto.SignUpResponseDTO;
 import com.gateKeeper.manager.service.SignUpService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,7 @@ public class SignUpController {
     }
 
     @PostMapping
-    public ResponseEntity<SignUpResponseDTO> signUp(@RequestBody SignUpRequestDTO signUpRequestDTO) {
+    public ResponseEntity<SignUpResponseDTO> signUp(@Valid @RequestBody SignUpRequestDTO signUpRequestDTO) {
 
         SignUpResponseDTO signUpResponseDTO = this.companyService.register(signUpRequestDTO);
 

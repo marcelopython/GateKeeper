@@ -2,7 +2,6 @@ package com.gateKeeper.manager.service;
 
 import com.gateKeeper.manager.model.User;
 
-import javax.security.auth.login.LoginException;
 
 public abstract class Auth {
 
