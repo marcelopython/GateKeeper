@@ -17,7 +17,15 @@ public class SystemDTO {
 
     private String description;
 
-    private Company companyId;
+    private Company company;
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
 
     public SystemDTO() {
     }
@@ -26,11 +34,11 @@ public class SystemDTO {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.companyId = companyId;
+        this.company = companyId;
     }
 
     public System toEntity() {
-        return new System(this.name, this.description, this.companyId);
+        return new System(this.name, this.description, this.company);
     }
 
     public Long getId() {
@@ -57,11 +65,4 @@ public class SystemDTO {
         this.description = description;
     }
 
-    public Company getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(Company companyId) {
-        this.companyId = companyId;
-    }
 }

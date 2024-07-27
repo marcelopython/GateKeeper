@@ -30,7 +30,7 @@ public class System {
 
     @ManyToOne
     @JoinColumn(name = "company_id", nullable = false)
-    private Company companyId;
+    private Company company;
 
     @CreationTimestamp
     @Column(name = "created_at")
@@ -46,7 +46,7 @@ public class System {
     public System(String name, String description, Company companyId) {
         this.name = name;
         this.description = description;
-        this.companyId = companyId;
+        this.company = companyId;
     }
 
     public Long getId() {
@@ -55,6 +55,14 @@ public class System {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public UUID getUuid() {
@@ -81,14 +89,6 @@ public class System {
         this.description = description;
     }
 
-    public Company getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(Company companyId) {
-        this.companyId = companyId;
-    }
-
     public Instant getCreatedAt() {
         return createdAt;
     }
@@ -106,7 +106,7 @@ public class System {
     }
 
     public SystemDTO toDTO() {
-        return new SystemDTO(this.getId(), this.getName(), this.getDescription(), this.getCompanyId());
+        return new SystemDTO(this.getId(), this.getName(), this.getDescription(), this.getCompany());
     }
 
     @Override
@@ -116,7 +116,7 @@ public class System {
                 ", uuid=" + uuid +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", companyId=" + companyId +
+                ", companyId=" + company +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';

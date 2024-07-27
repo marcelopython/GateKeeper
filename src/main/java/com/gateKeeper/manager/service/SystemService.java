@@ -24,7 +24,7 @@ public class SystemService implements SystemServiceInterface {
     }
 
     public SystemDTO create(SystemDTO systemDTO) {
-        systemDTO.setCompanyId(Auth.getUser().getCompanyId());
+        systemDTO.setCompany(Auth.getUser().getCompanyId());
         System system = systemRepository.save(systemDTO.toEntity());
         java.lang.System.out.println(system);
         return system.toDTO();

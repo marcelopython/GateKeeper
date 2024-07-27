@@ -47,7 +47,7 @@ public class Company implements Serializable {
     
     private String phone;
 
-	@OneToMany(mappedBy = "companyId")
+	@OneToMany(mappedBy = "company")
 	private Set<System> systems;
 
     @CreationTimestamp
